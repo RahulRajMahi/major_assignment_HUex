@@ -15,6 +15,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv(".env")
 
+AUTH_USER_MODEL = 'authentication.User'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account_management',
+    'rest_framework',
+    'app_for_all',
+    'authentication',
+    'issue',
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +96,7 @@ DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # }
 }
 
 
