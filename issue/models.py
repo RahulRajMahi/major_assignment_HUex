@@ -1,3 +1,5 @@
+import datetime
+import django.utils
 from django.db import models
 from django.db.models.deletion import CASCADE
 
@@ -26,6 +28,8 @@ class Issue(models.Model):
     projct: Project = models.ForeignKey(Project, on_delete=CASCADE)
     reporter: User = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reported')
     assignee: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='assigned')
-    
+    created_at: datetime.datetime = models.DateTimeField(auto_now_add=True)
+    updated_at: datetime.datetime = models.DateTimeField(auto_now=True)
+
     def __str__(self) -> str:
         return self.title

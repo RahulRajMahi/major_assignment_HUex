@@ -1,10 +1,13 @@
-from django.conf.urls import url
-from django.urls.conf import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
 
-from .views import IssueList
+from .views import IssueViewSet
 
+router = DefaultRouter()
+router.register(r'issue', IssueViewSet)
+
+app_name = 'issue'
 
 urlpatterns = [
-    path('issue/', IssueList.as_view()),
-    path('issue/<int:id>/', IssueList.as_view()),
+    path('', include(router.urls)),
 ]

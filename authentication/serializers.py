@@ -144,3 +144,12 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+class UserViewSerializer(serializers.ModelSerializer):
+    """
+    Serializer to show user's details to other users.
+    """
+
+    class Meta:
+        model = User
+        fields = ('id', 'username',)
