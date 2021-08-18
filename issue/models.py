@@ -30,6 +30,20 @@ class Issue(models.Model):
     assignee: User = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='assigned')
     created_at: datetime.datetime = models.DateTimeField(auto_now_add=True)
     updated_at: datetime.datetime = models.DateTimeField(auto_now=True)
+    is_active: bool = models.BooleanField(default=True)
 
     def __str__(self) -> str:
-        return self.title
+        return f"{self.id}: {self.title}"
+
+
+class Comment(models.Model):
+    issue: Issue = models.ForeignKey(Issue, on_delete=models.CASCADE, related_name='comments')
+    author: User = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    text: str = models.TextField()
+
+    created_at: datetime.datetime = models.DateTimeField(auto_now_add=True)
+    updated_at: datetime.datetime = models.DateTimeField(auto_now=True)
+    is_active: bool = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.text

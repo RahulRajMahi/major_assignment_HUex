@@ -11,4 +11,4 @@ class Project(models.Model):
     updated_at: models.DateTimeField = models.DateTimeField(auto_now=True)
     
     def __str__(self) -> str:
-        return self.title
+        return f"{self.id}: {self.title}"
